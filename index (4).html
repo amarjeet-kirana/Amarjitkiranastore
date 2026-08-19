@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अमरजीत किराना स्टोर</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            background: #ff5722;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .category-title {
+            background: #ff5722;
+            color: white;
+            padding: 8px 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .product-list {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .product-item:last-child {
+            border-bottom: none;
+        }
+        .add-btn {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .add-btn:hover {
+            background-color: #e64a19;
+        }
+        #shopping-cart {
+            border: 2px solid #ff5722;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+        #contact-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #f9f9f9;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h2 style="margin:0;">🏪 अमरजीत किराना स्टोर</h2>
+        <p style="margin:5px 0 0 0; font-size:14px;">हमारे यहाँ किराना का सभी सामान उपलब्ध है</p>
+    </div>
+
+    <!-- 1. बिस्कुट और नमकीन -->
+    <div class="category-title">🍪 बिस्कुट, नमकीन और बटर</div>
+    <div class="product-list">
+        <div class="product-item"><span>butter gold biscuit (₹10)</span><button class="add-btn" onclick="addToCart('butter gold biscuit', 10)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>dreamlite biscuit (₹15)</span><button class="add-btn" onclick="addToCart('dreamlite biscuit (15)', 15)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>dreamlite biscuit (₹5)</span><button class="add-btn" onclick="addToCart('dreamlite biscuit (5)', 5)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>jeera biscuit (₹5)</span><button class="add-btn" onclick="addToCart('jeera biscuit', 5)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>meri biscuit (₹10)</span><button class="add-btn" onclick="addToCart('meri biscuit', 10)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>Top Herb's biscuit (₹10)</span><button class="add-btn" onclick="addToCart('Top Herb\'s biscuit (10)', 10)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>Top Herb's biscuit (₹35)</span><button class="add-btn" onclick="addToCart('Top Herb\'s biscuit (35)', 35)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>Top goldbiscuit (₹10)</span><button class="add-btn" onclick="addToCart('Top goldbiscuit', 10)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>parlegi biscuit (₹5)</span><button class="add-btn" onclick="addToCart('parlegi biscuit (5)', 5)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>parlegi biscuit (₹10)</span><button class="add-btn" onclick="addToCart('parlegi biscuit (10)', 10)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>गुडडे बिस्कुट (₹20)</span><button class="add-btn" onclick="addToCart('गुडडे बिस्कुट (20)', 20)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>गुडडे बिस्कुट (₹5)</span><button class="add-btn" onclick="addToCart('गुडडे बिस्कुट (5)', 5)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>रस बिस्कुट (₹35)</span><button class="add-btn" onclick="addToCart('रस बिस्कुट (35)', 35)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>रस बिस्कुट (₹10)</span><button class="add-btn" onclick="addToCart('रस बिस्कुट (10)', 10)">🛒 जोड़ें</button></div>
+    </div>
+
+    <!-- 2. कोल्ड ड्रिंक्स और दूध -->
+    <div class="category-title">🥤 कोल्ड ड्रिंक्स और डेयरी</div>
+    <div class="product-list">
+        <div class="product-item"><span>Sprite</span><button class="add-btn" onclick="addToCart('Sprite', 40)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>Mango Juice</span><button class="add-btn" onclick="addToCart('Mango Juice', 40)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>Jeera Drink</span><button class="add-btn" onclick="addToCart('Jeera Drink', 20)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>Nimka</span><button class="add-btn" onclick="addToCart('Nimka', 20)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>Coca Cola</span><button class="add-btn" onclick="addToCart('Coca Cola', 40)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>Sting Energy Drink</span><button class="add-btn" onclick="addToCart('Sting', 20)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>Milk (सुधा / अमुल)</span><button class="add-btn" onclick="addToCart('Milk (सुधा/अमुल)', 30)">🛒 जोड़ें</button></div>
+    </div>
+
+    <!-- 3. राशन और किराना सामान -->
+    <div class="category-title">🌾 राशन और घरेलू सामान</div>
+    <div class="product-list">
+        <div class="product-item"><span>kalash oil 1000 ml (₹150)</span><button class="add-btn" onclick="addToCart('kalash oil 1000 ml', 150)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>kalash oil 500ml (₹75)</span><button class="add-btn" onclick="addToCart('kalash oil 500ml', 75)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>चीनी (मिश्री/पत्ती के साथ)</span><button class="add-btn" onclick="addToCart('चीनी', 45)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>आलू</span><button class="add-btn" onclick="addToCart('आलू', 25)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>प्याज</span><button class="add-btn" onclick="addToCart('प्याज', 40)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>लहसुन</span><button class="add-btn" onclick="addToCart('लहसुन', 150)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>बेसन</span><button class="add-btn" onclick="addToCart('बेसन', 90)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>चना</span><button class="add-btn" onclick="addToCart('चना', 70)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>चना दाल</span><button class="add-btn" onclick="addToCart('चना दाल', 85)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>सूजी</span><button class="add-btn" onclick="addToCart('सूजी', 50)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>मटर</span><button class="add-btn" onclick="addToCart('मटर', 80)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>साबुन</span><button class="add-btn" onclick="addToCart('साबुन', 10)">🛒 जोड़ें</button></div>
+        <div class="product-item"><span>चावल</span><button class="add-btn" onclick="addToCart('चावल', 45)">🛒 जोड़ें</button></div>
+    </div>
+
+    <!-- 4. शॉपिंग कार्ट -->
+    <div id="shopping-cart">
+        <h3 style="color: #ff5722; margin-top: 0;">🛒 आपकी कार्ट (Your Cart)</h3>
+        <ul id="cart-items" style="list-style: none; padding: 0; margin: 0;">
+            <p id="empty-cart-msg" style="margin: 0; color: #777;">कार्ट अभी खाली है। ऊपर से सामान जोड़ें।</p>
+        </ul>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+        <p><strong>कुल कीमत (Total):</strong> ₹<span id="cart-total">0</span></p>
+        <button onclick="sendWhatsAppOrder()" style="background-color: #25D366; color: white; border: none; padding: 12px 20px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%;">
+            ✅ व्हाट्सएप पर ऑर्डर भेजें (Order on WhatsApp)
+        </button>
+    </div>
+
+    <!-- 5. कांटेक्ट फॉर्म -->
+    <div id="contact-section">
+        <h3 style="text-align: center; color: #ff5722; margin-top: 0;">📨 हमें संदेश भेजें (Contact Us)</h3>
+        <form id="myContactForm" onsubmit="handleFormSubmit(event)">
+            <label style="display:block; margin: 10px 0 5px; font-weight: bold;">आपका नाम:</label>
+            <input type="text" id="custName" required style="width:100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+
+            <label style="display:block; margin: 10px 0 5px; font-weight: bold;">मोबाइल नंबर:</label>
+            <input type="tel" id="custPhone" required style="width:100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+
+            <label style="display:block; margin: 10px 0 5px; font-weight: bold;">सामान की लिस्ट / संदेश:</label>
+            <textarea id="custMsg" rows="4" required style="width:100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical;"></textarea>
+
+            <button type="submit" style="margin-top: 15px; width: 100%; background: #ff5722; color: white; border: none; padding: 12px; font-size: 16px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                संदेश भेजें
+            </button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(pName, pPrice) {
+    let emptyMsg = document.getElementById("empty-cart-msg");
+    if(emptyMsg) { emptyMsg.style.display = "none"; }
+    cart.push({ name: pName, price: pPrice });
+    updateCartUI();
+}
+
+function updateCartUI() {
+    let list = document.getElementById("cart-items");
+    list.innerHTML = "";
+    let total = 0;
+    
+    if(cart.length === 0) {
+        list.innerHTML = '<p id="empty-cart-msg" style="margin: 0; color: #777;">कार्ट अभी खाली है। ऊपर से सामान जोड़ें।</p>';
+    } else {
+        cart.forEach((item, index) => {
+            total += item.price;
+            list.innerHTML += `<li style="padding: 8px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f9f9f9;">
+                <span>\${item.name} - ₹\${item.price}</span>
+                <button onclick="removeFromCart(\${index})" style="background: #ff3333; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 4px 8px; font-size: 12px;">हटाएं</button>
+            </li>`;
+        });
+    }
+    document.getElementById("cart-total").innerText = total;
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function sendWhatsAppOrder() {
+    if(cart.length === 0) {
+        alert("कृपया पहले कार्ट में सामान जोड़ें!");
+        return;
+    }
+    let number = "919142399225"; 
+    let text = "नमस्ते अमरजीत किराना स्टोर, मुझे यह सामान ऑर्डर करना है:\n\n";
+    let total = 0;
+    
+    cart.forEach((item, i) => {
+        text += `\${i+1}. \${item.name} - ₹\weight:bold;\${item.price}\n`;
+        total += item.price;
+    });
+    text = "नमस्ते अमरजीत किराना स्टोर, मुझे यह सामान ऑर्डर करना है:\n\n";
+    total = 0;
+    cart.forEach((item, i) => {
+        text += `\${i+1}. \${item.name} - ₹\${item.price}\n`;
+        total += item.price;
+    });
+    text += `\n*कुल मूल्य (Total): ₹\${total}*`;
+    
+    let url = "https://wa.me/" + number + "?text=" + encodeURIComponent(text);
+    window.open(url, '_blank');
+}
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+    let name = document.getElementById("custName").value;
+    let phone = document.getElementById("custPhone").value;
+    let msg = document.getElementById("custMsg").value;
+    
+    let whatsappText = `*नया संदेश (Contact Form)*\n\n*नाम:* \${name}\n*मोबाइल:* \${phone}\n*संदेश:* \${msg}`;
+    let myNumber = "919142399225";
+    
+    let url = "https://wa.me/" + myNumber + "?text=" + encodeURIComponent(whatsappText);
+    window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
