@@ -24,6 +24,23 @@
             border-radius: 8px;
             margin-bottom: 15px;
         }
+        /* सर्च बार का स्टाइल */
+        .search-container {
+            margin: 15px 0;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 2px solid #ff5722;
+            border-radius: 25px;
+            box-sizing: border-box;
+            outline: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
         .category-title {
             background: #ff5722;
             color: white;
@@ -79,6 +96,14 @@
             background: #f9f9f9;
             box-sizing: border-box;
         }
+        .no-results {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -90,53 +115,66 @@
         <p style="margin:5px 0 0 0; font-size:14px;">हमारे यहाँ किराना का सभी सामान उपलब्ध है</p>
     </div>
 
+    <!-- सर्च बार डिब्बा -->
+    <div class="search-container">
+        <input type="text" id="mySearchInput" class="search-box" onkeyup="filterProducts()" placeholder="🔍 सामान का नाम खोजें (जैसे: oil, biscuit, आलू)...">
+    </div>
+
+    <div id="noProductsMessage" class="no-results">यह सामान दुकान की लिस्ट में नहीं मिला!</div>
+
     <!-- 1. बिस्कुट और नमकीन -->
-    <div class="category-title">🍪 बिस्कुट, नमकीन और बटर</div>
-    <div class="product-list">
-        <div class="product-item"><span>butter gold biscuit (₹10)</span><button class="add-btn" onclick="addToCart('butter gold biscuit', 10)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>dreamlite biscuit (₹15)</span><button class="add-btn" onclick="addToCart('dreamlite biscuit (15)', 15)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>dreamlite biscuit (₹5)</span><button class="add-btn" onclick="addToCart('dreamlite biscuit (5)', 5)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>jeera biscuit (₹5)</span><button class="add-btn" onclick="addToCart('jeera biscuit', 5)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>meri biscuit (₹10)</span><button class="add-btn" onclick="addToCart('meri biscuit', 10)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>Top Herb's biscuit (₹10)</span><button class="add-btn" onclick="addToCart('Top Herb\'s biscuit (10)', 10)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>Top Herb's biscuit (₹35)</span><button class="add-btn" onclick="addToCart('Top Herb\'s biscuit (35)', 35)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>Top goldbiscuit (₹10)</span><button class="add-btn" onclick="addToCart('Top goldbiscuit', 10)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>parlegi biscuit (₹5)</span><button class="add-btn" onclick="addToCart('parlegi biscuit (5)', 5)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>parlegi biscuit (₹10)</span><button class="add-btn" onclick="addToCart('parlegi biscuit (10)', 10)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>गुडडे बिस्कुट (₹20)</span><button class="add-btn" onclick="addToCart('गुडडे बिस्कुट (20)', 20)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>गुडडे बिस्कुट (₹5)</span><button class="add-btn" onclick="addToCart('गुडडे बिस्कुट (5)', 5)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>रस बिस्कुट (₹35)</span><button class="add-btn" onclick="addToCart('रस बिस्कुट (35)', 35)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>रस बिस्कुट (₹10)</span><button class="add-btn" onclick="addToCart('रस बिस्कुट (10)', 10)">🛒 जोड़ें</button></div>
+    <div class="category-block">
+        <div class="category-title">🍪 बिस्कुट, नमकीन और बटर</div>
+        <div class="product-list">
+            <div class="product-item"><span>butter gold biscuit (₹10)</span><button class="add-btn" onclick="addToCart('butter gold biscuit', 10)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>dreamlite biscuit (₹15)</span><button class="add-btn" onclick="addToCart('dreamlite biscuit (15)', 15)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>dreamlite biscuit (₹5)</span><button class="add-btn" onclick="addToCart('dreamlite biscuit (5)', 5)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>jeera biscuit (₹5)</span><button class="add-btn" onclick="addToCart('jeera biscuit', 5)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>meri biscuit (₹10)</span><button class="add-btn" onclick="addToCart('meri biscuit', 10)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>Top Herb's biscuit (₹10)</span><button class="add-btn" onclick="addToCart('Top Herb's biscuit (10)', 10)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>Top Herb's biscuit (₹35)</span><button class="add-btn" onclick="addToCart('Top Herb's biscuit (35)', 35)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>Top goldbiscuit (₹10)</span><button class="add-btn" onclick="addToCart('Top goldbiscuit', 10)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>parlegi biscuit (₹5)</span><button class="add-btn" onclick="addToCart('parlegi biscuit (5)', 5)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>parlegi biscuit (₹10)</span><button class="add-btn" onclick="addToCart('parlegi biscuit (10)', 10)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>गुडडे बिस्कुट (₹20)</span><button class="add-btn" onclick="addToCart('गुडडे बिस्कुट (20)', 20)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>गुडडे बिस्कुट (₹5)</span><button class="add-btn" onclick="addToCart('गुडडे बिस्कुट (5)', 5)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>रस बिस्कुट (₹35)</span><button class="add-btn" onclick="addToCart('रस बिस्कुट (35)', 35)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>रस बिस्कुट (₹10)</span><button class="add-btn" onclick="addToCart('रस बिस्कुट (10)', 10)">🛒 जोड़ें</button></div>
+        </div>
     </div>
 
     <!-- 2. कोल्ड ड्रिंक्स और दूध -->
-    <div class="category-title">🥤 कोल्ड ड्रिंक्स और डेयरी</div>
-    <div class="product-list">
-        <div class="product-item"><span>Sprite</span><button class="add-btn" onclick="addToCart('Sprite', 40)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>Mango Juice</span><button class="add-btn" onclick="addToCart('Mango Juice', 40)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>Jeera Drink</span><button class="add-btn" onclick="addToCart('Jeera Drink', 20)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>Nimka</span><button class="add-btn" onclick="addToCart('Nimka', 20)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>Coca Cola</span><button class="add-btn" onclick="addToCart('Coca Cola', 40)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>Sting Energy Drink</span><button class="add-btn" onclick="addToCart('Sting', 20)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>Milk (सुधा / अमुल)</span><button class="add-btn" onclick="addToCart('Milk (सुधा/अमुल)', 30)">🛒 जोड़ें</button></div>
+    <div class="category-block">
+        <div class="category-title">🥤 कोल्ड ड्रिंक्स और डेयरी</div>
+        <div class="product-list">
+            <div class="product-item"><span>Sprite</span><button class="add-btn" onclick="addToCart('Sprite', 40)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>Mango Juice</span><button class="add-btn" onclick="addToCart('Mango Juice', 40)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>Jeera Drink</span><button class="add-btn" onclick="addToCart('Jeera Drink', 20)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>Nimka</span><button class="add-btn" onclick="addToCart('Nimka', 20)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>Coca Cola</span><button class="add-btn" onclick="addToCart('Coca Cola', 40)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>Sting Energy Drink</span><button class="add-btn" onclick="addToCart('Sting', 20)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>Milk (सुधा / अमुल)</span><button class="add-btn" onclick="addToCart('Milk (सुधा/अमुल)', 30)">🛒 जोड़ें</button></div>
+        </div>
     </div>
 
     <!-- 3. राशन और किराना सामान -->
-    <div class="category-title">🌾 राशन और घरेलू सामान</div>
-    <div class="product-list">
-        <div class="product-item"><span>kalash oil 1000 ml (₹150)</span><button class="add-btn" onclick="addToCart('kalash oil 1000 ml', 150)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>kalash oil 500ml (₹75)</span><button class="add-btn" onclick="addToCart('kalash oil 500ml', 75)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>चीनी (मिश्री/पत्ती के साथ)</span><button class="add-btn" onclick="addToCart('चीनी', 45)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>आलू</span><button class="add-btn" onclick="addToCart('आलू', 25)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>प्याज</span><button class="add-btn" onclick="addToCart('प्याज', 40)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>लहसुन</span><button class="add-btn" onclick="addToCart('लहसुन', 150)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>बेसन</span><button class="add-btn" onclick="addToCart('बेसन', 90)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>चना</span><button class="add-btn" onclick="addToCart('चना', 70)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>चना दाल</span><button class="add-btn" onclick="addToCart('चना दाल', 85)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>सूजी</span><button class="add-btn" onclick="addToCart('सूजी', 50)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>मटर</span><button class="add-btn" onclick="addToCart('मटर', 80)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>साबुन</span><button class="add-btn" onclick="addToCart('साबुन', 10)">🛒 जोड़ें</button></div>
-        <div class="product-item"><span>चावल</span><button class="add-btn" onclick="addToCart('चावल', 45)">🛒 जोड़ें</button></div>
+    <div class="category-block">
+        <div class="category-title">🌾 राशन और घरेलू सामान</div>
+        <div class="product-list">
+            <div class="product-item"><span>kalash oil 1000 ml - ₹150</span><button class="add-btn" onclick="addToCart('kalash oil 1000 ml', 150)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>kalash oil 500ml - ₹75</span><button class="add-btn" onclick="addToCart('kalash oil 500ml', 75)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>चीनी (मिश्री/पत्ती के साथ)</span><button class="add-btn" onclick="addToCart('चीनी', 45)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>आलू</span><button class="add-btn" onclick="addToCart('आलू', 25)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>प्याज</span><button class="add-btn" onclick="addToCart('प्याज', 40)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>लहसुन</span><button class="add-btn" onclick="addToCart('लहसुन', 150)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>बेसन</span><button class="add-btn" onclick="addToCart('बेसन', 90)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>चना</span><button class="add-btn" onclick="addToCart('चना', 70)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>चना दाल</span><button class="add-btn" onclick="addToCart('चना दाल', 85)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>सूजी</span><button class="add-btn" onclick="addToCart('सूजी', 50)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>मटर</span><button class="add-btn" onclick="addToCart('मटर', 80)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>साबुन</span><button class="add-btn" onclick="addToCart('साबुन', 10)">🛒 जोड़ें</button></div>
+            <div class="product-item"><span>चावल</span><button class="add-btn" onclick="addToCart('चावल', 45)">🛒 जोड़ें</button></div>
+        </div>
     </div>
 
     <!-- 4. शॉपिंग कार्ट -->
@@ -176,6 +214,49 @@
 <script>
 let cart = [];
 
+// सर्च (खोजने) का लॉजिक
+function filterProducts() {
+    let input = document.getElementById('mySearchInput').value.toLowerCase();
+    let productItems = document.getElementsByClassName('product-item');
+    let categoryBlocks = document.getElementsByClassName('category-block');
+    let totalVisibleProducts = 0;
+
+    for (let i = 0; i < productItems.length; i++) {
+        let productName = productItems[i].getElementsByTagName('span')[0].innerText.toLowerCase();
+        if (productName.includes(input)) {
+            productItems[i].style.display = "flex";
+            totalVisibleProducts++;
+        } else {
+            productItems[i].style.display = "none";
+        }
+    }
+
+    // खाली श्रेणियों को छुपाने के लिए
+    for (let j = 0; j < categoryBlocks.length; j++) {
+        let items = categoryBlocks[j].getElementsByClassName('product-item');
+        let hasVisibleItem = false;
+        for (let k = 0; k < items.length; k++) {
+            if (items[k].style.display !== "none") {
+                hasVisibleItem = true;
+                break;
+            }
+        }
+        if (hasVisibleItem) {
+            categoryBlocks[j].style.display = "block";
+        } else {
+            categoryBlocks[j].style.display = "none";
+        }
+    }
+
+    // अगर कोई सामान न मिले तो संदेश दिखाएं
+    let noResultsMessage = document.getElementById('noProductsMessage');
+    if (totalVisibleProducts === 0) {
+        noResultsMessage.style.display = "block";
+    } else {
+        noResultsMessage.style.display = "none";
+    }
+}
+
 function addToCart(pName, pPrice) {
     let emptyMsg = document.getElementById("empty-cart-msg");
     if(emptyMsg) { emptyMsg.style.display = "none"; }
@@ -194,8 +275,8 @@ function updateCartUI() {
         cart.forEach((item, index) => {
             total += item.price;
             list.innerHTML += `<li style="padding: 8px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f9f9f9;">
-                <span>\${item.name} - ₹\${item.price}</span>
-                <button onclick="removeFromCart(\${index})" style="background: #ff3333; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 4px 8px; font-size: 12px;">हटाएं</button>
+                <span>${item.name} - ₹${item.price}</span>
+                <button onclick="removeFromCart(${index})" style="background: #ff3333; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 4px 8px; font-size: 12px;">हटाएं</button>
             </li>`;
         });
     }
@@ -217,16 +298,10 @@ function sendWhatsAppOrder() {
     let total = 0;
     
     cart.forEach((item, i) => {
-        text += `\${i+1}. \${item.name} - ₹\weight:bold;\${item.price}\n`;
+        text += `${i+1}. ${item.name} - ₹${item.price}\n`;
         total += item.price;
     });
-    text = "नमस्ते अमरजीत किराना स्टोर, मुझे यह सामान ऑर्डर करना है:\n\n";
-    total = 0;
-    cart.forEach((item, i) => {
-        text += `\${i+1}. \${item.name} - ₹\${item.price}\n`;
-        total += item.price;
-    });
-    text += `\n*कुल मूल्य (Total): ₹\${total}*`;
+    text += `\n*कुल मूल्य (Total): ₹${total}*`;
     
     let url = "https://wa.me/" + number + "?text=" + encodeURIComponent(text);
     window.open(url, '_blank');
@@ -238,7 +313,7 @@ function handleFormSubmit(e) {
     let phone = document.getElementById("custPhone").value;
     let msg = document.getElementById("custMsg").value;
     
-    let whatsappText = `*नया संदेश (Contact Form)*\n\n*नाम:* \${name}\n*मोबाइल:* \${phone}\n*संदेश:* \${msg}`;
+    let whatsappText = `*नया संदेश (Contact Form)*\n\n*नाम:* ${name}\n*मोबाइल:* ${phone}\n*संदेश:* ${msg}`;
     let myNumber = "919142399225";
     
     let url = "https://wa.me/" + myNumber + "?text=" + encodeURIComponent(whatsappText);
